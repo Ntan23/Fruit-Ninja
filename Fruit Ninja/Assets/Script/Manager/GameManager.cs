@@ -36,8 +36,6 @@ public class GameManager : MonoBehaviour
 
         blade.enabled = true;
         spawnManager.enabled = true;
-
-        ClearScene();
     }
 
     public void AddScore(int value)

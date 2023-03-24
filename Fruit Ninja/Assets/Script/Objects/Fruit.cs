@@ -6,9 +6,12 @@ public class Fruit : MonoBehaviour
 {
     #region Variables
     [SerializeField] private int scoreToAdd;
+    private float timer;
     private bool isSliced;
     [SerializeField] private GameObject unslicedObj;
     [SerializeField] private GameObject slicedObj;
+    [SerializeField] private GameObject slicedTopObj;
+    [SerializeField] private GameObject slicedBottomObj;
     private Rigidbody rb;
     private Collider objCollider;
     private ParticleSystem particleEffect;
@@ -29,7 +32,26 @@ public class Fruit : MonoBehaviour
     void OnEnable()
     {
         particleEffect.Pause();
+
+        timer = 0.0f;
+
         isSliced = false;
+    }
+
+    void OnDisable()
+    {
+        rb.velocity = Vector3.zero;
+    }  
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+
+        if(timer > spawnManager.maxLifetime) 
+        {
+            if(isSliced) ResetFruit(); 
+            else if(!isSliced) gameObject.SetActive(false);
+        }
     }
 
     void Slice(Vector3 direction, Vector3 position, float force)
@@ -46,10 +68,10 @@ public class Fruit : MonoBehaviour
     
         Rigidbody[] slicedObjRb = slicedObj.GetComponentsInChildren<Rigidbody>();
 
-        foreach(Rigidbody rb in slicedObjRb)
+        foreach(Rigidbody slicedRb in slicedObjRb)
         {
-            rb.velocity = rb.velocity;
-            rb.AddForceAtPosition(direction * force, position, ForceMode.Impulse);
+            slicedRb.velocity = rb.velocity;
+            slicedRb.AddForceAtPosition(direction * force, position, ForceMode.Impulse);
         }
     }
 
@@ -65,5 +87,29 @@ public class Fruit : MonoBehaviour
                 gm.AddScore(scoreToAdd);
             }
         }
+    }
+
+    private void ResetFruit()
+    {
+        transform.position = Vector3.zero;
+
+        unslicedObj.SetActive(true);
+
+        slicedTopObj.transform.position = Vector3.zero;
+        slicedBottomObj.transform.position = Vector3.zero;
+        slicedBottomObj.transform.position = Vector3.zero;
+
+        slicedTopObj.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        slicedBottomObj.transform.rotation = Quaternion.Euler(90, 0, 0);
+
+        slicedTopObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        slicedBottomObj.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+        slicedTopObj.SetActive(true);
+        slicedBottomObj.SetActive(true);
+        slicedObj.SetActive(false);
+
+        gameObject.SetActive(false);
+        isSliced = false;
     }
 }

@@ -26,14 +26,14 @@ public class SpawnManager : MonoBehaviour
 
     #region OtherVariables
     private Collider spawnArea;
-    [Header("Object To Spawn")]
-    [SerializeField] private GameObject[] fruits;
-    [SerializeField] private GameObject bomb;
+    ObjectPoolManager objectPoolManager;
     #endregion
 
     void Start()
     {
         spawnArea = GetComponent<Collider>();
+
+        objectPoolManager = ObjectPoolManager.Instance;
     }
 
     void OnEnable()
@@ -52,9 +52,9 @@ public class SpawnManager : MonoBehaviour
 
         while (enabled)
         {
-            GameObject objectToSpawn = fruits[Random.Range(0, fruits.Length)];
+            GameObject objectToSpawn = objectPoolManager.GetFruitFromPool();
 
-            if(bombChance > Random.value) objectToSpawn = bomb;
+            if(bombChance > Random.value) objectToSpawn = objectPoolManager.GetBombFromPool();
 
             Vector3 spawnPosition =  new Vector3();
             spawnPosition.x = Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x);
@@ -64,12 +64,12 @@ public class SpawnManager : MonoBehaviour
             float angle = Random.Range(minAngle, maxAngle);
             Quaternion spawnRotation = Quaternion.Euler(0, 0, angle);
 
-            GameObject spawnedObject = Instantiate(objectToSpawn, spawnPosition, spawnRotation);
+            objectToSpawn.transform.position = spawnPosition;
+            objectToSpawn.transform.rotation = spawnRotation;
+            objectToSpawn.SetActive(true);
 
             float spawnForce = Random.Range(minForce, maxForce);
-            spawnedObject.GetComponent<Rigidbody>().AddForce(spawnedObject.transform.up * spawnForce, ForceMode.Impulse);
-
-            Destroy(spawnedObject, maxLifetime);
+            objectToSpawn.GetComponent<Rigidbody>().AddForce(objectToSpawn.transform.up * spawnForce, ForceMode.Impulse);
 
             yield return new WaitForSeconds(Random.Range(minSpawnDelay,maxSpawnDelay));
         }

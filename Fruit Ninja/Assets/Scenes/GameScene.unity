@@ -326,6 +326,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391295874}
   m_CullTransparentMesh: 1
+--- !u!1 &406418617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 406418618}
+  m_Layer: 0
+  m_Name: Bombs Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &406418618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406418617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 964363786}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &547286121
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +369,8 @@ GameObject:
   - component: {fileID: 547286126}
   - component: {fileID: 547286125}
   - component: {fileID: 547286124}
+  - component: {fileID: 547286127}
+  - component: {fileID: 547286128}
   - component: {fileID: 547286123}
   m_Layer: 0
   m_Name: Game Manager
@@ -388,8 +421,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 35, z: 9.970103}
-  m_Center: {x: -25.5, y: 0, z: 0.00000047683716}
+  m_Size: {x: 1, y: 50, z: 9.970103}
+  m_Center: {x: -25.5, y: 6, z: 0.00000047683716}
 --- !u!65 &547286125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -401,8 +434,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 35, z: 9.970103}
-  m_Center: {x: 25.5, y: 0, z: 0.00000047683716}
+  m_Size: {x: 1, y: 50, z: 9.970103}
+  m_Center: {x: 25.5, y: 6, z: 0.00000047683716}
 --- !u!65 &547286126
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -416,6 +449,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 50, y: 1, z: 10}
   m_Center: {x: 0, y: -18, z: 0}
+--- !u!65 &547286127
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547286121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 50, y: 1, z: 10}
+  m_Center: {x: 0, y: 30, z: 0}
+--- !u!65 &547286128
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547286121}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 50, y: 50, z: 1}
+  m_Center: {x: 0, y: 6, z: -6}
 --- !u!1 &665099754
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +712,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &686199701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686199702}
+  m_Layer: 0
+  m_Name: Fruits Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &686199702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686199701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 964363786}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minSpawnDelay: 0.25
-  maxSpawnDelay: 0.8
+  maxSpawnDelay: 1
   minAngle: -15
   maxAngle: 15
   minForce: 18
@@ -1177,6 +1267,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &964363785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 964363786}
+  - component: {fileID: 964363787}
+  m_Layer: 0
+  m_Name: Object Pool Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &964363786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964363785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 686199702}
+  - {fileID: 406418618}
+  m_Father: {fileID: 1368867585}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &964363787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964363785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6508211c87778ed43945bda1e636fa37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fruitsPool:
+  - objectToPool: {fileID: 5704338568289681837, guid: b18a132667688e0438f7a979fc705190, type: 3}
+    amountToPool: 3
+    canExpand: 1
+  - objectToPool: {fileID: 5704338568289681837, guid: dd68034886c84764b85e4c8f1703b126, type: 3}
+    amountToPool: 3
+    canExpand: 1
+  - objectToPool: {fileID: 5704338568289681837, guid: 9cbb2c932ee9e8846bec9a6a1536e6cf, type: 3}
+    amountToPool: 3
+    canExpand: 1
+  - objectToPool: {fileID: 5704338568289681837, guid: 6eddeee6985342646a39d78496cb3d00, type: 3}
+    amountToPool: 3
+    canExpand: 1
+  - objectToPool: {fileID: 5704338568289681837, guid: 7a597a0ebabd4cf48837f1f2e39624aa, type: 3}
+    amountToPool: 3
+    canExpand: 1
+  bombsPool:
+  - objectToPool: {fileID: 5810476994952201716, guid: 4ec002d179a27fd4cb90b40b9510d350, type: 3}
+    amountToPool: 3
+    canExpand: 1
+  fruitsParent: {fileID: 686199701}
+  bombsParent: {fileID: 406418617}
 --- !u!1 &1102343718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,6 +2124,7 @@ Transform:
   m_Children:
   - {fileID: 547286122}
   - {fileID: 871809764}
+  - {fileID: 964363786}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
