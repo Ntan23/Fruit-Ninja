@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameOverUI gameOverUI;
     [SerializeField] private LivesCountUI livesCountUI;
     [SerializeField] private CameraShake cameraShake;
+    [SerializeField] private GameObject gamePausedUI;
     private SpawnManager spawnManager;
     private AudioManager audioManager;
     #endregion
@@ -128,5 +129,17 @@ public class GameManager : MonoBehaviour
         flashbang.FlashbangOn();
         yield return new WaitForSeconds(1.0f);
         gameOverUI.ShowGameOverUI();
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0.0f;
+        gamePausedUI.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        gamePausedUI.SetActive(false);
     }
 }
