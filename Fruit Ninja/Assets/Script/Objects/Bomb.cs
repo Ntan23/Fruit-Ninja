@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    #region Varibles
     private float timer = 0.0f;
     private GameManager gm;
     private SpawnManager spawnManager;
+    private AudioManager audioManager;
+    #endregion
 
     void Awake()
     {
         gm = GameManager.Instance;
         spawnManager = SpawnManager.Instance;
+    }
+
+    void Start()
+    {
+        audioManager = AudioManager.Instance;
     }
 
     void Update()
@@ -23,7 +31,11 @@ public class Bomb : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player")) gm.GameOver();
+        if(other.CompareTag("Player")) 
+        {
+            audioManager.Play("BombHit");
+            gm.GameOver();
+        }
     }
 
     void ResetBomb()

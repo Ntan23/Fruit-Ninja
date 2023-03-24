@@ -7,6 +7,7 @@ using TMPro;
 public class ScoreUI : MonoBehaviour
 {
     #region Variables
+    private int difficultyIndex;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI bestScoreText;
     GameManager gm;
@@ -15,6 +16,8 @@ public class ScoreUI : MonoBehaviour
     void Awake()
     {
         gm = GameManager.Instance;
+
+        difficultyIndex = PlayerPrefs.GetInt("Difficulty");
 
         UpdateBestScore();
     }
@@ -26,6 +29,19 @@ public class ScoreUI : MonoBehaviour
 
     public void UpdateBestScore()
     {
-        bestScoreText.text = "Best : " + PlayerPrefs.GetInt("BestScore",0).ToString();
+        if(difficultyIndex == 0)
+        {
+            bestScoreText.text = "Best : " + PlayerPrefs.GetInt("EasyBestScore",0).ToString();
+        }   
+
+        if(difficultyIndex == 1)
+        {
+            bestScoreText.text = "Best : " + PlayerPrefs.GetInt("NormalBestScore",0).ToString();
+        }   
+
+        if(difficultyIndex == 2)
+        {
+            bestScoreText.text = "Best : " + PlayerPrefs.GetInt("HardBestScore",0).ToString();
+        }   
     }
 }

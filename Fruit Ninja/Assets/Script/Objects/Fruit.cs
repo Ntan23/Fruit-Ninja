@@ -13,20 +13,20 @@ public class Fruit : MonoBehaviour
     [SerializeField] private GameObject slicedTopObj;
     [SerializeField] private GameObject slicedBottomObj;
     private Rigidbody rb;
-    private Collider objCollider;
     private ParticleSystem particleEffect;
     private GameManager gm;
     private SpawnManager spawnManager;
+    private AudioManager audioManager;
     #endregion
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        objCollider = GetComponent<Collider>();
         particleEffect = GetComponentInChildren<ParticleSystem>();
 
         gm = GameManager.Instance;
         spawnManager = SpawnManager.Instance;
+        audioManager = AudioManager.Instance;
     }
 
     void OnEnable()
@@ -59,9 +59,9 @@ public class Fruit : MonoBehaviour
         unslicedObj.SetActive(false);
         slicedObj.SetActive(true);
 
-        //objCollider.enabled = false;
         isSliced = true;
         particleEffect.Play();
+        audioManager.Play("Slice");
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         slicedObj.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -86,6 +86,11 @@ public class Fruit : MonoBehaviour
                 Slice(blade.bladeDirection, blade.transform.position, blade.sliceForce);
                 gm.AddScore(scoreToAdd);
             }
+        }
+
+        if(other.CompareTag("Detector")) 
+        {
+            if(!isSliced) gm.LoseLive();
         }
     }
 
