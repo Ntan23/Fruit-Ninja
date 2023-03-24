@@ -21,6 +21,7 @@ public class Blade : MonoBehaviour
     private Collider bladeCollider;
     private Camera mainCam;
     private TrailRenderer bladeTrail;
+    [SerializeField] private Gradient[] trailGradient;
     #endregion
 
     void Awake()
@@ -28,6 +29,11 @@ public class Blade : MonoBehaviour
         mainCam = Camera.main;
         bladeCollider = GetComponent<Collider>();
         bladeTrail = GetComponentInChildren<TrailRenderer>();
+    }
+
+    void Start()
+    {
+        bladeTrail.colorGradient = trailGradient[PlayerPrefs.GetInt("SelectedTrail")];
     }
 
     void OnEnable()

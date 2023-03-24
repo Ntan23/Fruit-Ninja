@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
 {
     GameManager gm;
 
-    void Start()
+    void Awake()
     {
         gm = GameManager.Instance;
     }

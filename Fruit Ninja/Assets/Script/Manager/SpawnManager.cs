@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float maxAngle;
     [SerializeField] private float minForce;
     [SerializeField] private float maxForce;
-    [SerializeField] private float maxLifetime;
+    public float maxLifetime;
     [Range(0f,1.0f)]
     [SerializeField] private float bombChance;
     #endregion
@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
 
         while (enabled)
         {

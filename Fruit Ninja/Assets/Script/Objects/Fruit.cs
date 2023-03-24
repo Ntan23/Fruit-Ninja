@@ -5,12 +5,15 @@ using UnityEngine;
 public class Fruit : MonoBehaviour
 {
     #region Variables
-    [SerializeField] GameObject unslicedObj;
-    [SerializeField] GameObject slicedObj;
+    [SerializeField] private int scoreToAdd;
+    private bool isSliced;
+    [SerializeField] private GameObject unslicedObj;
+    [SerializeField] private GameObject slicedObj;
     private Rigidbody rb;
     private Collider objCollider;
     private ParticleSystem particleEffect;
     private GameManager gm;
+    private SpawnManager spawnManager;
     #endregion
 
     void Awake()
@@ -19,12 +22,14 @@ public class Fruit : MonoBehaviour
         objCollider = GetComponent<Collider>();
         particleEffect = GetComponentInChildren<ParticleSystem>();
 
-        particleEffect.Pause();
+        gm = GameManager.Instance;
+        spawnManager = SpawnManager.Instance;
     }
 
-    void Start()
+    void OnEnable()
     {
-        gm = GameManager.Instance;
+        particleEffect.Pause();
+        isSliced = false;
     }
 
     void Slice(Vector3 direction, Vector3 position, float force)
@@ -32,7 +37,8 @@ public class Fruit : MonoBehaviour
         unslicedObj.SetActive(false);
         slicedObj.SetActive(true);
 
-        objCollider.enabled = false;
+        //objCollider.enabled = false;
+        isSliced = true;
         particleEffect.Play();
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -53,9 +59,11 @@ public class Fruit : MonoBehaviour
         {
             Blade blade = other.GetComponent<Blade>();
 
-            Slice(blade.bladeDirection, blade.transform.position, blade.sliceForce);
-
-            gm.AddScore();
+            if(!isSliced)
+            {
+                Slice(blade.bladeDirection, blade.transform.position, blade.sliceForce);
+                gm.AddScore(scoreToAdd);
+            }
         }
     }
 }
