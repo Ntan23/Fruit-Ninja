@@ -3207,6 +3207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9954cee8112125448b3f0dab46a60403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useMobile: 0
   minSliceVelocity: 0.01
   sliceForce: 10
   trailGradient:

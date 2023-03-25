@@ -6,6 +6,7 @@ public class Blade : MonoBehaviour
 {
     #region BoolVariables
     private bool isSlicing;
+    [SerializeField] private bool useMobile;
     #endregion
 
     #region FloatVariables
@@ -43,9 +44,23 @@ public class Blade : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0)) StartSlicing();
-        else if(Input.GetMouseButtonUp(0)) StopSlicing();
-        else if(isSlicing) ContinueSlicing();
+        if(!useMobile)
+        {
+            if(Input.GetMouseButtonDown(0)) StartSlicing();
+            else if(Input.GetMouseButtonUp(0)) StopSlicing();
+        }
+        else if(useMobile)
+        {
+            if(Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if(touch.phase == TouchPhase.Began) StartSlicing();
+                else if(touch.phase == TouchPhase.Ended) StopSlicing();
+            }
+        }
+        
+        if(isSlicing) ContinueSlicing();
     }
 
     void OnDisable()
