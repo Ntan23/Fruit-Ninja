@@ -9,7 +9,6 @@ public class TrailSelectorUI : MonoBehaviour
     [SerializeField] private Image checkmark;
     [SerializeField] private GameObject[] trails;
 
-    // Start is called before the first frame update
     void Start()
     {
         backButton.onClick.AddListener(() => {

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LivesCountUI livesCountUI;
     [SerializeField] private CameraShake cameraShake;
     [SerializeField] private GameObject gamePausedUI;
+    [SerializeField] private GameObject gamePauseButton;
     private SpawnManager spawnManager;
     private AudioManager audioManager;
     #endregion
@@ -102,6 +103,7 @@ public class GameManager : MonoBehaviour
         spawnManager.enabled = false;
         scoreUI.gameObject.SetActive(false);
         livesCountUI.gameObject.SetActive(false);
+        gamePauseButton.SetActive(false);
         
         ClearScene();
         StartCoroutine(ShowGameOverUI());
